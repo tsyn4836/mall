@@ -1,5 +1,5 @@
 <template>
-  <swiper :options="swiperOption" :key="keyId">
+  <swiper :options="swiperOption" >
     <!-- 插槽里填写滑动项的内容 -->
     <slot>
       <!--<swiper-slide v-for="item in sliders">-->
@@ -22,9 +22,9 @@ export default {
     swiper
   },
 
-  // 定义调用该基础组件的元素的属性
+  // 定义该基础组件的调用元素的Attribute
   props: {
-    // 滑动方向
+    // 轮播方向
     direction: {
       type: String,
       default: 'horizontal',
@@ -35,7 +35,7 @@ export default {
         ].indexOf(value) > -1
       }
     },
-    // 自动滑动的时间间隔
+    // 自动轮播的时间间隔
     interval: {
       type: Number,
       default: 3000,
@@ -52,18 +52,18 @@ export default {
     pagination: {
       type: Boolean,
       default: true
+    },
+    // data是什么意思?
+    data: {
+      type: Array,
+      default () {
+        return []
+      }
     }
-    // data: {
-    //   type: Array,
-    //   default () {
-    //     return []
-    //   }
-    // }
   },
 
   data () {
     return {
-      // keyId: Math.random()
       swiperOption: {
         watchOverflow: true,
         direction: this.direction,
@@ -79,36 +79,6 @@ export default {
       }
     }
   }
-//   watch: {
-//     data (newData) {
-//       if (newData.length === 0) {
-//         return
-//       }
-//       this.swiperOption.loop = newData.length === 1 ? false : this.loop
-//       this.keyId = Math.random()
-//     }
-
-//   },
-//   created () {
-//     this.init()
-//   },
-//   methods: {
-//     init () {
-//       this.swiperOption = {
-//         watchOverflow: true,
-//         direction: this.direction,
-//         autoplay: this.interval ? {
-//           delay: this.interval,
-//           disableOnInteraction: false
-//         } : false,
-//         slidesPerView: 1,
-//         loop: this.data.length <= 1 ? false : this.loop,
-//         pagination: {
-//           el: this.pagination ? '.swiper-pagination' : null
-//         }
-//       }
-//     }
-//   }
 }
 </script>
 
