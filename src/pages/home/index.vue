@@ -8,9 +8,10 @@
     </header>
 
     <!-- 首页内容 -->
-    <main class="g-main-container">
+    <me-scroll class="g-main-container">
       <home-slider/>
-    </main>
+      <home-nav/>
+    </me-scroll>
 
     <!-- 首页的返回顶部按钮 -->
     <div class="g-backtop-container"></div>
@@ -22,12 +23,16 @@
 
 <script>
 import HomeHeader from './header'
+import MeScroll from 'base/scroll'
 import HomeSlider from './slider'
+import HomeNav from './nav'
 export default {
   name: 'Home',
   components: {
     HomeHeader,
-    HomeSlider
+    MeScroll,
+    HomeSlider,
+    HomeNav
   }
 }
 </script>
