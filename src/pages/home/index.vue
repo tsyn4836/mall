@@ -1,20 +1,33 @@
 <template>
+  <!-- 首页 -->
   <div class="home">
+
+    <!-- 首页头部 -->
     <header class="g-header-container">
       <home-header/>
     </header>
-    <div></div>
+
+    <!-- 首页内容 -->
+    <div>
+      <home-slider/>
+    </div>
+
+    <!-- 首页的返回顶部按钮 -->
     <div class="g-backtop-container"></div>
+
+    <!-- 首页的产品路由视图 -->
     <router-view></router-view>
   </div>
 </template>
 
 <script>
 import HomeHeader from './header'
+import HomeSlider from './slider'
 export default {
   name: 'Home',
   components: {
-    HomeHeader
+    HomeHeader,
+    HomeSlider
   }
 }
 </script>

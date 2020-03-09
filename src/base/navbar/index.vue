@@ -1,19 +1,25 @@
 <template>
-    <div class="mine-navbar">
-      <div class="mine-navbar-left" v-if="$slots.left">
-        <slot name="left"></slot>
-      </div>
-      <div class="mine-navbar-center" v-if="$slots.center && !title">
-        <slot name="center"></slot>
-      </div>
-      <div class="mine-navbar-right" v-if="$slots.right">
-        <slot name="right"></slot>
-      </div>
-      <h1 class="mine-navbar-title" v-if="title">
-        <span class="mine-navbar-text" v-text="title"></span>
-      </h1>
+  <!-- 顶部导航条模块 -->
+  <div class="mine-navbar">
+    <!-- 导航条左部 -->
+    <div class="mine-navbar-left" v-if="$slots.left">
+      <slot name="left"></slot>
     </div>
+    <!-- 导航条中部 -->
+    <div class="mine-navbar-center" v-if="$slots.center && !title">
+      <slot name="center"></slot>
+    </div>
+    <!-- 导航条右部 -->
+    <div class="mine-navbar-right" v-if="$slots.right">
+      <slot name="right"></slot>
+    </div>
+    <!-- 导航条标题 -->
+    <h1 class="mine-navbar-title" v-if="title">
+      <span class="mine-navbar-text" v-text="title"></span>
+    </h1>
+  </div>
 </template>
+
 <script>
 export default {
   name: 'MeNavbar',
@@ -77,5 +83,4 @@ export default {
       @include ellipsis();
     }
   }
-
 </style>

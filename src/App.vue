@@ -1,8 +1,11 @@
 <template>
+  <!-- 页面容器 -->
   <div id="app" class="g-container">
+    <!-- 主视图容器 -->
     <div class="g-view-container">
       <router-view></router-view>
     </div>
+    <!-- 底部导航条容器 -->
     <div class="g-footer-container">
       <c-tabbar/>
     </div>
