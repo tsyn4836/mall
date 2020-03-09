@@ -21,7 +21,24 @@ export default {
   components: {
     swiper
   },
-
+  data () {
+    return {
+      // SwiperOption里的键值对是Swiper组件需要的,由调用本组件的父组件的Attribute属性传到本组件的data,再由data传到Swiper的Attribute
+      swiperOption: {
+        watchOverflow: true,
+        direction: this.direction,
+        autoplay: this.interval ? {
+          delay: this.interval,
+          disableOnInteraction: false
+        } : false,
+        slidesPerView: 1,
+        loop: this.data.length <= 1 ? false : this.loop,
+        pagination: {
+          el: this.pagination ? '.swiper-pagination' : null
+        }
+      }
+    }
+  },
   // 定义该基础组件的调用元素的Attribute
   props: {
     // 轮播方向
@@ -60,25 +77,8 @@ export default {
         return []
       }
     }
-  },
-
-  data () {
-    return {
-      swiperOption: {
-        watchOverflow: true,
-        direction: this.direction,
-        autoplay: this.interval ? {
-          delay: this.interval,
-          disableOnInteraction: false
-        } : false,
-        slidesPerView: 1,
-        loop: this.data.length <= 1 ? false : this.loop,
-        pagination: {
-          el: this.pagination ? '.swiper-pagination' : null
-        }
-      }
-    }
   }
+
 }
 </script>
 

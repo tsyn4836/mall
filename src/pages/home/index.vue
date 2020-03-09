@@ -8,9 +8,9 @@
     </header>
 
     <!-- 首页内容 -->
-    <div>
+    <main class="g-main-container">
       <home-slider/>
-    </div>
+    </main>
 
     <!-- 首页的返回顶部按钮 -->
     <div class="g-backtop-container"></div>

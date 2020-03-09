@@ -10,7 +10,7 @@
         v-for="(item, index) in sliders"
         :key="index"
       >
-        <a :href="item.linkUrl" class="sliders-link">
+        <a :href="item.linkUrl" class="slider-link">
           <img :src="item.picUrl" class="slider-img" />
         </a>
       </swiper-slide>
@@ -29,26 +29,13 @@ export default {
     swiperSlide
   },
   data () {
+    // 本组件的所有Attribute属性来自于同目录的config.js文件
     return {
       direction: sliderOptions.direction,
       loop: sliderOptions.loop,
       interval: sliderOptions.interval,
       pagination: sliderOptions.pagination,
-      sliders: [
-        {
-          'linkUrl': 'https://www.imooc.com',
-          'picUrl': require('./img/slider-img/1.jpg')
-        }, {
-          'linkUrl': 'https://www.imooc.com',
-          'picUrl': require('./img/slider-img/2.jpg')
-        }, {
-          'linkUrl': 'https://www.imooc.com',
-          'picUrl': require('./img/slider-img/3.jpg')
-        }, {
-          'linkUrl': 'https://www.imooc.com',
-          'picUrl': require('./img/slider-img/4.jpg')
-        }
-      ]
+      sliders: sliderOptions.sliders
     }
   }
 }
