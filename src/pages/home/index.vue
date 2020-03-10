@@ -11,6 +11,7 @@
     <me-scroll class="g-main-container">
       <home-slider/>
       <home-nav/>
+      <home-recommend/>
     </me-scroll>
 
     <!-- 首页的返回顶部按钮 -->
@@ -26,13 +27,15 @@ import HomeHeader from './header'
 import MeScroll from 'base/scroll'
 import HomeSlider from './slider'
 import HomeNav from './nav'
+import HomeRecommend from './recommend'
 export default {
   name: 'Home',
   components: {
     HomeHeader,
     MeScroll,
     HomeSlider,
-    HomeNav
+    HomeNav,
+    HomeRecommend
   }
 }
 </script>
