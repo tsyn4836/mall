@@ -11,12 +11,12 @@ export const getHomeSlider = () => {
         return res.data.slider
       }
       throw new Error('没有成功获取到数据！')
-    }).then(data => {
-      return new Promise(resolve => {
-        setTimeout(() => {
-          resolve(data)
-        }, 1000)
-      })
+    // }).then(data => {
+    //   return new Promise(resolve => {
+    //     setTimeout(() => {
+    //       resolve(data)
+    //     }, 1000)
+    //   })
     }).catch(err => {
       if (err) {
         console.log(err)

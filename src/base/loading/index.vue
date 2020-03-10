@@ -1,10 +1,11 @@
 <template>
   <div class="mine-loading" :class="{'mine-loading-inline': inline}">
-
+    <!-- 加载中的图片 -->
     <span class="mine-loading-indicator"      v-if="indicator==='on'">
+      <!-- 通过插槽可以自定义加载中的图片是什么，默认是loading.gif -->
       <slot><img src="./loading.gif" alt="loading"></slot>
     </span>
-
+    <!-- 加载中的文字 -->
     <span class="mine-loading-text" v-if="loadingText">{{loadingText}}</span>
   </div>
 </template>
@@ -13,6 +14,7 @@
 export default {
   name: 'MeLoading',
   props: {
+    // 是否显示加载中的图片
     indicator: {
       type: String,
       default: 'on',
@@ -20,10 +22,12 @@ export default {
         return ['on', 'off'].indexOf(value) > -1
       }
     },
+    // 加载中的默认文字
     text: {
       type: String,
       default: '加载中...'
     },
+    // 图片和文字是水平排列还是垂直排列,默认垂直排列
     inline: {
       type: Boolean,
       default: false

@@ -1,13 +1,17 @@
 <template>
   <div class="slider-wrapper">
+    <!-- 若轮播图没有东西，则显示加载中 -->
     <me-loading v-if="!sliders.length"/>
+    <!-- 轮播图 -->
     <me-slider
+      v-else
+      :data="sliders"
       :direction="direction"
       :loop="loop"
       :interval="interval"
       :pagination="pagination"
-      v-else
     >
+      <!-- 轮播图的每一项 -->
       <swiper-slide
         v-for="(item, index) in sliders"
         :key="index"

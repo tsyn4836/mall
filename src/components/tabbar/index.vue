@@ -19,7 +19,6 @@
       <i class="iconfont icon-personal"></i>
       <span>个人中心</span>
     </router-link>
-
   </div>
 </template>
 

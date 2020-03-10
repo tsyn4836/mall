@@ -1,13 +1,10 @@
 <template>
   <nav class="nav">
     <ul class="nav-list">
-      <li
-        class="nav-item"
-        v-for="(item, index) in navs"
-        :key="index">
+      <li class="nav-item" v-for="(item, index) in navs" :key="index">
         <a :href="item.linkUrl" class="nav-link">
-          <img :src="item.picUrl" class="nav-pic">
-          <span>{{item.text}}</span>
+          <img :src="item.picUrl" class="nav-pic" />
+          <span>{{ item.text }}</span>
         </a>
       </li>
     </ul>
@@ -15,66 +12,67 @@
 </template>
 
 <script>
-import {navItems} from './config'
+import { navItems } from './config'
 
 export default {
   name: 'HomeNav',
-  // data() {
-  // return {
-  // navs: navItems
-  // 放到config.js中
-  // {
-  // linkUrl: 'https://www.imooc.com',
-  // picUrl: require('./img/nav-item/nav-item-1.png'),
-  // text: '拍卖'
-  // },
-  // {
-  // linkUrl: 'https://www.imooc.com',
-  // picUrl: require('./img/nav-item/nav-item-2.png'),
-  // text: '拍卖'
-  // },
-  // {
-  // linkUrl: 'https://www.imooc.com',
-  // picUrl: require('./img/nav-item/nav-item-3.png'),
-  // text: '拍卖'
-  // },
-  // {
-  // linkUrl: 'https://www.imooc.com',
-  // picUrl: require('./img/nav-item/nav-item-4.png'),
-  // text: '拍卖'
-  // },
-  // {
-  // linkUrl: 'https://www.imooc.com',
-  // picUrl: require('./img/nav-item/nav-item-5.png'),
-  // text: '拍卖'
-  // },
-  // {
-  // linkUrl: 'https://www.imooc.com',
-  // picUrl: require('./img/nav-item/nav-item-6.png'),
-  // text: '拍卖'
-  // },
-  // {
-  // linkUrl: 'https://www.imooc.com',
-  // picUrl: require('./img/nav-item/nav-item-7.png'),
-  // text: '拍卖'
-  // },
-  // {
-  // linkUrl: 'https://www.imooc.com',
-  // picUrl: require('./img/nav-item/nav-item-8.png'),
-  // text: '拍卖'
-  // },
-  // {
-  // linkUrl: 'https://www.imooc.com',
-  // picUrl: require('./img/nav-item/nav-item-9.png'),
-  // text: '拍卖'
-  // },
-  // {
-  // linkUrl: 'https://www.imooc.com',
-  // picUrl: require('./img/nav-item/nav-item-10.png'),
-  // text: '拍卖'
-  // }
-  // };
-  // },
+  data () {
+    return {
+      // nav的数据放置在'./config'中的navItems
+      /* navs: [
+        {
+          linkUrl: 'https://www.imooc.com',
+          picUrl: require('./img/nav-item/nav-item-1.png'),
+          text: '拍卖'
+        },
+        {
+          linkUrl: 'https://www.imooc.com',
+          picUrl: require('./img/nav-item/nav-item-2.png'),
+          text: '拍卖'
+        },
+        {
+          linkUrl: 'https://www.imooc.com',
+          picUrl: require('./img/nav-item/nav-item-3.png'),
+          text: '拍卖'
+        },
+        {
+          linkUrl: 'https://www.imooc.com',
+          picUrl: require('./img/nav-item/nav-item-4.png'),
+          text: '拍卖'
+        },
+        {
+          linkUrl: 'https://www.imooc.com',
+          picUrl: require('./img/nav-item/nav-item-5.png'),
+          text: '拍卖'
+        },
+        {
+          linkUrl: 'https://www.imooc.com',
+          picUrl: require('./img/nav-item/nav-item-6.png'),
+          text: '拍卖'
+        },
+        {
+          linkUrl: 'https://www.imooc.com',
+          picUrl: require('./img/nav-item/nav-item-7.png'),
+          text: '拍卖'
+        },
+        {
+          linkUrl: 'https://www.imooc.com',
+          picUrl: require('./img/nav-item/nav-item-8.png'),
+          text: '拍卖'
+        },
+        {
+          linkUrl: 'https://www.imooc.com',
+          picUrl: require('./img/nav-item/nav-item-9.png'),
+          text: '拍卖'
+        },
+        {
+          linkUrl: 'https://www.imooc.com',
+          picUrl: require('./img/nav-item/nav-item-10.png'),
+          text: '拍卖'
+        }
+      ] */
+    }
+  },
   created () {
     this.navs = navItems
     // console.log(this);
@@ -109,5 +107,4 @@ export default {
       margin-bottom: 8px;
     }
   }
-
 </style>
