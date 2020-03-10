@@ -1,6 +1,9 @@
 <template>
   <!-- 滚动条容器 -->
-  <swiper :options="swiperOption">
+  <swiper
+    :options="swiperOption"
+    ref="swiper"
+  >
 
     <!-- 滚动条里面的内容都存在插槽里 -->
     <swiper-slide>
@@ -28,6 +31,20 @@ export default {
     scrollbar: {
       type: Boolean,
       default: true
+    },
+    content: {
+      type: [Array, Object]
+    }
+  },
+  // 通过跟踪content属性的变化,更新滚动条
+  watch: {
+    content () {
+      this.update()
+    }
+  },
+  methods: {
+    update () {
+      this.$refs.swiper && this.$refs.swiper.swiper.update()
     }
   },
   data () {

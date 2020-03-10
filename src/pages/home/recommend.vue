@@ -20,7 +20,7 @@
           :to="{name: 'home-product', params: {id: item.baseinfo.itemId}}"
         >
           <!-- 商品图片的容器是正方形,实现方法见scss -->
-          <p class="recommend-pic"><img class="recommend-img" :src="item.baseinfo.picUrlNew"></p>
+          <p class="recommend-pic"><img class="recommend-img" v-lazy="item.baseinfo.picUrlNew"></p>
           <p class="recommend-name">{{item.name.shortName}}</p>
           <p class="recommend-origPrice"><del>¥{{item.price.origPrice}}</del></p>
           <p class="recommend-info">
@@ -67,7 +67,8 @@ export default {
           this.curPage++
           this.totalPage = data.totalPage
           this.recommends = this.recommends.concat(data.itemList)
-          // this.$emit('loaded', this.recommends)
+          // 加载完成后,向外面触发已经在加载完recommend的信息(home.vue中的home-recommend元素那里)
+          this.$emit('loaded', this.recommends)
           // resolve()
         }
         // })

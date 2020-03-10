@@ -8,10 +8,12 @@
     </header>
 
     <!-- 首页内容 -->
-    <me-scroll class="g-main-container">
+    <!-- 页面滚动条通过content属性的值(recommends)的变化,在内部重新渲染滚动条的长度 -->
+    <me-scroll :content="recommends">
       <home-slider/>
       <home-nav/>
-      <home-recommend/>
+      <!-- 组件内部获取到recommend数据后,冒泡触发事件,在这里是更新recommends -->
+      <home-recommend @loaded="getRecommends"/>
     </me-scroll>
 
     <!-- 首页的返回顶部按钮 -->
@@ -36,6 +38,18 @@ export default {
     HomeSlider,
     HomeNav,
     HomeRecommend
+  },
+  data () {
+    return {
+      recommends: []
+    }
+  },
+  methods: {
+    updateScroll () {
+    },
+    getRecommends (recommends) {
+      this.recommends = recommends
+    }
   }
 }
 </script>
