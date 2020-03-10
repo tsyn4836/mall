@@ -1,12 +1,22 @@
 <template>
-  <div class="mine-loading" :class="{'mine-loading-inline': inline}">
+  <div
+    class="mine-loading"
+    :class="{'mine-loading-inline': inline}"
+  >
     <!-- 加载中的图片 -->
-    <span class="mine-loading-indicator"      v-if="indicator==='on'">
+    <span
+      class="mine-loading-indicator"
+      v-if="indicator==='on'"
+    >
       <!-- 通过插槽可以自定义加载中的图片是什么，默认是loading.gif -->
-      <slot><img src="./loading.gif" alt="loading"></slot>
+      <slot>
+        <img src="./loading.gif" alt="loading">
+      </slot>
     </span>
+
     <!-- 加载中的文字 -->
-    <span class="mine-loading-text" v-if="loadingText">{{loadingText}}</span>
+    <span class="mine-loading-text" v-if="text">{{text}}</span>
+
   </div>
 </template>
 
@@ -32,7 +42,8 @@ export default {
       type: Boolean,
       default: false
     }
-  },
+  }
+/*
   data () {
     return {
       loadingText: this.text
@@ -44,23 +55,11 @@ export default {
     }
   },
   methods: {
-    // setText(text = this.text) {
-    //   this.loadingText = text;
-    // }
-    setText (text) {
+    setText (text = this.text) {
       this.loadingText = text
     }
   }
-  // watch: {
-  //   text(text) {
-  //     this.loadingText = text;
-  //   }
-  // },
-  // methods: {
-  //   setText(text = this.text) {
-  //     this.loadingText = text;
-  //   }
-  // }
+*/
 }
 </script>
 

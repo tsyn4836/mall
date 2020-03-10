@@ -5,7 +5,7 @@
     <!-- 轮播图 -->
     <me-slider
       v-else
-      :data="sliders"
+      :sliders="sliders"
       :direction="direction"
       :loop="loop"
       :interval="interval"
@@ -25,29 +25,29 @@
 </template>
 
 <script>
-import MeSlider from 'base/slider'
 import MeLoading from 'base/loading'
+import MeSlider from 'base/slider'
 import {swiperSlide} from 'vue-awesome-swiper'
 import {sliderOptions} from './config'
 import {getHomeSlider} from 'api/home'
 export default {
   name: 'HomeSlider',
   components: {
-    MeSlider,
     MeLoading,
+    MeSlider,
     swiperSlide
   },
+  // 本组件的所有Attribute属性来自于同目录的config.js文件
   data () {
-    // 本组件的所有Attribute属性来自于同目录的config.js文件
     return {
       direction: sliderOptions.direction,
       loop: sliderOptions.loop,
       interval: sliderOptions.interval,
       pagination: sliderOptions.pagination,
-      // sliders: sliderOptions.sliders
-      sliders: []
+      sliders: sliderOptions.sliders
     }
   },
+  // 轮播图内容在初始化时从后台接口获取,src/api/home.js
   methods: {
     getSliders () {
       getHomeSlider().then(data => {

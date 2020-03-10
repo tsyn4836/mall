@@ -1,7 +1,10 @@
 <template>
-  <me-navbar class="header" v-show="visible">
+  <me-navbar class="header">
+    <!-- 导航条左部 -->
     <i class="iconfont icon-scan" slot="left"></i>
+    <!-- 导航条中部 -->
     <div slot="center">搜索框</div>
+    <!-- 导航条右部 -->
     <i class="iconfont icon-msg" slot="right"></i>
   </me-navbar>
 </template>
@@ -12,7 +15,8 @@ export default {
   name: 'HomeHeader',
   components: {
     MeNavbar
-  },
+  }
+/*
   data () {
     return {
       visible: true
@@ -30,6 +34,7 @@ export default {
       this.$router.push('/search')
     }
   }
+*/
 }
 </script>
 

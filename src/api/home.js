@@ -17,6 +17,8 @@ export const getHomeSlider = () => {
     //       resolve(data)
     //     }, 1000)
     //   })
+
+    // 若获取API数据失败,则打印错误内容,并返回404
     }).catch(err => {
       if (err) {
         console.log(err)

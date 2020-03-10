@@ -1,5 +1,5 @@
 <template>
-  <swiper :options="swiperOption" :key="keyId">
+  <swiper :options="swiperOption">
     <!-- 插槽里填写滑动项的内容 -->
     <slot>
       <!--<swiper-slide v-for="item in sliders">-->
@@ -53,39 +53,41 @@ export default {
       default: true
     },
     // 轮播图数据
-    data: {
+    sliders: {
       type: Array,
       default () {
         return []
       }
     }
   },
-  data () {
-    return {
-      // SwiperOption里的键值对是Swiper组件需要的,由调用本组件的父组件的Attribute属性传到本组件的data,再由data传到Swiper的Attribute
-      // swiperOption: {
-      //   watchOverflow: true,
-      //   direction: this.direction,
-      //   autoplay: this.interval ? {
-      //     delay: this.interval,
-      //     disableOnInteraction: false
-      //   } : false,
-      //   slidesPerView: 1,
-      //   loop: this.data.length <= 1 ? false : this.loop,
-      //   pagination: {
-      //     el: this.pagination ? '.swiper-pagination' : null
-      //   }
-      // },
-      keyId: Math.random()
-    }
-  },
+  /*
+    data () {
+      return {
+        // SwiperOption里的键值对是Swiper组件需要的,由调用本组件的父组件的Attribute属性传到本组件的data,再由data传到Swiper的Attribute
+        // swiperOption: {
+        //   watchOverflow: true,
+        //   direction: this.direction,
+        //   autoplay: this.interval ? {
+        //     delay: this.interval,
+        //     disableOnInteraction: false
+        //   } : false,
+        //   slidesPerView: 1,
+        //   loop: this.data.length <= 1 ? false : this.loop,
+        //   pagination: {
+        //     el: this.pagination ? '.swiper-pagination' : null
+        //   }
+        // },
+        keyId: Math.random()
+      }
+    },
+  */
   watch: {
-    data (newData) {
+    sliders (newData) {
       if (newData.length === 0) {
         return
       }
       this.swiperOption.loop = newData.length === 1 ? false : this.loop
-      this.keyId = Math.random()
+      // this.keyId = Math.random()
     }
   },
   methods: {
@@ -98,7 +100,7 @@ export default {
           disableOnInteraction: false
         } : false,
         slidesPerView: 1,
-        loop: this.data.length <= 1 ? false : this.loop,
+        loop: this.sliders.length <= 1 ? false : this.loop,
         pagination: {
           el: this.pagination ? '.swiper-pagination' : null
         }
