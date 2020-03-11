@@ -3,8 +3,8 @@
     <!-- 商品推荐标题 -->
     <h3 class="recommend-title">热卖推荐</h3>
     <!-- 若无商品推荐（即this.recommend为空数组），则显示加载中 -->
-    <div class="loading-container" v-if="!recommends.length">
-      <me-loading inline/>
+    <div class="loading-container" v-if="!recommends.length" >
+      <me-loading inline />
     </div>
     <!-- 商品推荐列表 -->
     <ul class="recommend-list" v-else>

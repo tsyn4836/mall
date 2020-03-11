@@ -9,7 +9,13 @@ export const getHomeSlider = () => {
   })
     .then(res => {
       if (res.data.code === SUCC_CODE) {
-        return res.data.slider
+        let sliders = res.data.slider
+        const slider = [sliders[Math.floor(Math.random() * sliders.length)]]
+        sliders = shuffle(sliders.filter(() => Math.random() >= 0.5))
+        if (sliders.length === 0) {
+          sliders = slider
+        }
+        return sliders
       }
       throw new Error('没有成功获取到数据！')
 
@@ -21,7 +27,7 @@ export const getHomeSlider = () => {
     //     }, 1000)
     //   })
 
-    // 若获取API数据失败,则打印错误内容,并返回404
+    // 若获取API数据失败,则打印错误内容,并返回404图片
     }).catch(err => {
       if (err) {
         console.log(err)
@@ -61,4 +67,19 @@ export const getHomeRecommend = (page = 1, pageSize = HOME_RECOMMEND_PAGE_SIZE) 
       console.log(err)
     }
   })
+}
+
+// 打乱数组顺序
+const shuffle = (arr) => {
+  const arrLength = arr.length
+  let i = arrLength
+  let rndNum
+
+  while (i--) {
+    if (i !== (rndNum = Math.floor(Math.random() * arrLength))) {
+      [arr[i], arr[rndNum]] = [arr[rndNum], arr[i]]
+    }
+  }
+
+  return arr
 }

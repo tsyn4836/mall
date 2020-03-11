@@ -1,5 +1,5 @@
 <template>
-  <swiper :options="swiperOption">
+  <swiper :options="swiperOption" :key="keyId">
     <!-- 插槽里填写滑动项的内容 -->
     <slot>
       <!--<swiper-slide v-for="item in sliders">-->
@@ -60,38 +60,23 @@ export default {
       }
     }
   },
-  /*
-    data () {
-      return {
-        // SwiperOption里的键值对是Swiper组件需要的,由调用本组件的父组件的Attribute属性传到本组件的data,再由data传到Swiper的Attribute
-        // swiperOption: {
-        //   watchOverflow: true,
-        //   direction: this.direction,
-        //   autoplay: this.interval ? {
-        //     delay: this.interval,
-        //     disableOnInteraction: false
-        //   } : false,
-        //   slidesPerView: 1,
-        //   loop: this.data.length <= 1 ? false : this.loop,
-        //   pagination: {
-        //     el: this.pagination ? '.swiper-pagination' : null
-        //   }
-        // },
-        keyId: Math.random()
-      }
-    },
-  */
+  data () {
+    return {
+      keyId: Math.random()
+    }
+  },
   watch: {
     sliders (newData) {
       if (newData.length === 0) {
         return
       }
       this.swiperOption.loop = newData.length === 1 ? false : this.loop
-      // this.keyId = Math.random()
+      this.keyId = Math.random()
     }
   },
   methods: {
     init () {
+      // SwiperOption里的键值对是Swiper组件需要的,由调用本组件的父组件的Attribute属性传到本组件的data,再由data传到Swiper的Attribute
       this.swiperOption = {
         watchOverflow: true,
         direction: this.direction,

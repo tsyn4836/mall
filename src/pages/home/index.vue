@@ -9,8 +9,12 @@
 
     <!-- 首页内容 -->
     <!-- 页面滚动条通过content属性的值(recommends)的变化,在内部重新渲染滚动条的长度 -->
-    <me-scroll :content="recommends">
-      <home-slider/>
+    <me-scroll
+      :content="recommends"
+      :pullDown="true"
+      @pull-down="pullToRefresh"
+    >
+      <home-slider ref="slider"/>
       <home-nav/>
       <!-- 组件内部获取到recommend数据后,冒泡触发事件,在这里是更新recommends -->
       <home-recommend @loaded="getRecommends"/>
@@ -49,6 +53,13 @@ export default {
     },
     getRecommends (recommends) {
       this.recommends = recommends
+    },
+    pullToRefresh (end) {
+      this.$refs.slider.update().then(end)
+      // setTimeout(() => {
+      console.log('下拉刷新')
+      //   end()
+      // }, 1000)
     }
   }
 }

@@ -15,7 +15,7 @@
     </span>
 
     <!-- 加载中的文字 -->
-    <span class="mine-loading-text" v-if="text">{{text}}</span>
+    <span class="mine-loading-text" v-if="loadingText">{{loadingText}}</span>
 
   </div>
 </template>
@@ -32,18 +32,17 @@ export default {
         return ['on', 'off'].indexOf(value) > -1
       }
     },
-    // 加载中的默认文字
-    text: {
-      type: String,
-      default: '加载中...'
-    },
     // 图片和文字是水平排列还是垂直排列,默认垂直排列
     inline: {
       type: Boolean,
       default: false
+    },
+    // 加载中的默认文字，只作为父组件传参的中介，真正用于渲染的是loadingText
+    text: {
+      type: String,
+      default: '加载中...'
     }
-  }
-/*
+  },
   data () {
     return {
       loadingText: this.text
@@ -55,11 +54,11 @@ export default {
     }
   },
   methods: {
+    // 该方法只在引用本组件的Scroll组件调用过，在此从没被调用过
     setText (text = this.text) {
       this.loadingText = text
     }
   }
-*/
 }
 </script>
 
