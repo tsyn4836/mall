@@ -45,8 +45,6 @@ export default {
       interval: sliderOptions.interval,
       pagination: sliderOptions.pagination,
       sliders: sliderOptions.sliders
-      // Vue不能用解构赋值？
-      // {direction, loop, interval, pagination, sliders} = sliderOptions
     }
   },
   // 轮播图内容在初始化时从后台接口获取,src/api/home.js

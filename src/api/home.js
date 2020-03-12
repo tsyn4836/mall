@@ -8,6 +8,7 @@ export const getHomeSlider = () => {
     timeout: TIMEOUT
   })
     .then(res => {
+      // 在从接口中得到的一堆sliders中随机生成返回一些sliders
       if (res.data.code === SUCC_CODE) {
         let sliders = res.data.slider
         const slider = [sliders[Math.floor(Math.random() * sliders.length)]]
@@ -19,7 +20,7 @@ export const getHomeSlider = () => {
       }
       throw new Error('没有成功获取到数据！')
 
-    // 手动延迟1秒
+    // // 手动延迟1秒
     // }).then(data => {
     //   return new Promise(resolve => {
     //     setTimeout(() => {
@@ -40,15 +41,14 @@ export const getHomeSlider = () => {
 }
 
 // 获取热门推荐数据--jsonp
-export const getHomeRecommend = (page = 1, pageSize = HOME_RECOMMEND_PAGE_SIZE) => {
+export const getHomeRecommend = (page = 1, psize = HOME_RECOMMEND_PAGE_SIZE) => {
   const url = 'https://ju.taobao.com/json/tg/ajaxGetItemsV2.json'
   const params = {
     page,
-    pageSize,
+    psize,
     type: 0,
     frontCatId: ''
   }
-
   return jsonp(url, params, jsonpOptions).then(res => {
     if (res.code === '200') {
       return res
@@ -59,6 +59,7 @@ export const getHomeRecommend = (page = 1, pageSize = HOME_RECOMMEND_PAGE_SIZE) 
   // }).then(res => {
   //   return new Promise(resolve => {
   //     setTimeout(() => {
+  //       // console.log(res)
   //       resolve(res)
   //     }, 1000)
   //   })

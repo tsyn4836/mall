@@ -15,7 +15,11 @@
     </span>
 
     <!-- 加载中的文字 -->
-    <span class="mine-loading-text" v-if="loadingText">{{loadingText}}</span>
+    <span class="mine-loading-text"
+      v-if="loadingText"
+    >
+      {{loadingText}}
+    </span>
 
   </div>
 </template>
@@ -54,7 +58,7 @@ export default {
     }
   },
   methods: {
-    // 该方法只在引用本组件的Scroll组件调用过，在此从没被调用过
+    // 暴露到外部的修改载入文本的方法
     setText (text = this.text) {
       this.loadingText = text
     }

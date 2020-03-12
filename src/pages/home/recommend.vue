@@ -55,23 +55,25 @@ export default {
     this.getRecommend()
   },
   methods: {
+    // API
+    update () {
+      return this.getRecommend()
+    },
     getRecommend () {
       if (this.curPage > this.totalPage) {
-        // return Promise.reject(new Error('没有更多了'))
-        return
+        return Promise.reject(new Error('没有更多了'))
       }
       return getHomeRecommend(this.curPage).then(data => {
-        // return new Promise(resolve => {
-        // 如果没有获取到数据，则data为undefined，继续运行下去会报错，要成功获数据才继续运行下去
-        if (data) {
-          this.curPage++
-          this.totalPage = data.totalPage
-          this.recommends = this.recommends.concat(data.itemList)
-          // 加载完成后,向外面触发已经在加载完recommend的信息(home.vue中的home-recommend元素那里)
-          this.$emit('loaded', this.recommends)
-          // resolve()
-        }
-        // })
+        return new Promise(resolve => {
+          if (data) {
+            this.curPage++
+            this.totalPage = data.totalPage
+            this.recommends = this.recommends.concat(data.itemList)
+            // 获取到recommend后，更新滚动条
+            this.$emit('update-scrollbar')
+            resolve()
+          }
+        })
       })
     }
   }

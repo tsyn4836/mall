@@ -19,7 +19,7 @@ export const sliderOptions = { // 轮播图配置
     // }
   ]
 }
-// export const HEADER_TRANSITION_HEIGHT = 100;
+export const HEADER_TRANSITION_HEIGHT = 100
 
 export const navItems = [
   // 原nav.uve的数据
