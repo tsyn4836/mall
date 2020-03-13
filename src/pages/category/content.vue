@@ -10,7 +10,9 @@
       </div>
     </div>
     <!-- 内容 -->
-    <me-scroll ref="scroll">
+    <me-scroll ref="scroll"
+      @scroll-end="scrollEnd"
+    >
       <div class="content">
         <!-- banner -->
         <div class="pic" v-if="content.banner">
@@ -51,9 +53,11 @@
       </div>
     </me-scroll>
     <!-- 返回顶部 -->
-    <div class="g-backtop-container">
-      <me-backtop @backtop="backToTop" :visible="isBacktopVisible"/>
-    </div>
+    <transition class="backtop">
+      <div class="g-backtop-container">
+        <me-backtop @backtop="backToTop" :visible="isBacktopVisible"/>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -62,8 +66,8 @@ import MeLoading from 'base/loading'
 import MeScroll from 'base/scroll'
 import MeBacktop from 'base/backtop'
 import {getCategoryContent} from 'api/category'
-// import storage from 'assets/js/storage';
-// import {CATEGORY_CONTENT_KEY, CATEGORY_CONTENT_UPDATE_TIME_INTERVAL} from './config';
+import storage from 'assets/js/storage'
+import {CATEGORY_CONTENT_KEY, CATEGORY_CONTENT_UPDATE_TIME_INTERVAL} from './config'
 
 export default {
   name: 'CategoryContent',
@@ -96,18 +100,57 @@ export default {
   },
   methods: {
     getContent (id) {
-      return getCategoryContent(id).then(data => {
-        if (data) {
-          console.log('getContentByCategory')
-          this.content = data
+      // 从localStorage获取Json格式的缓存
+      let localContents = storage.get(CATEGORY_CONTENT_KEY)
+      let updateTime
+      const curTime = new Date().getTime()
+
+      // 如果该分类已有本地缓存
+      if (localContents && localContents[id]) {
+        updateTime = localContents[id].updateTime || 0
+        // 如果该分类的缓存还没过期
+        if (curTime - updateTime <= CATEGORY_CONTENT_UPDATE_TIME_INTERVAL) {
+          // 从本地缓存获取分类内容
+          return this.getContentByLocalStorage(localContents[id])
+        } else { // 如果已经过期
+          // 从网络获取分类内容，并缓存到本地
+          return this.getContentByHTTP(id).then(() => {
+            this.updateLocalStorage(localContents, id, curTime)
+          })
         }
+      } else { // 如果该分类没有本地缓存
+        // 从网络获取分类内容，并缓存到本地
+        return this.getContentByHTTP(id).then(() => {
+          this.updateLocalStorage(localContents, id, curTime)
+        })
+      }
+    },
+    getContentByLocalStorage (content) {
+      this.content = content.data
+      return Promise.resolve()
+    },
+    getContentByHTTP (id) {
+      return getCategoryContent(id).then(data => {
+        return new Promise(resolve => {
+          if (data) {
+            this.content = data
+            resolve()
+          }
+        })
       })
     },
-    backToTop (speed) {
-      this.$refs.scroll && this.$refs.scroll.scrollToTop(speed)
+    updateLocalStorage (localContents, id, curTime) {
+      localContents = localContents || {}
+      localContents[id] = {}
+      localContents[id].data = this.content
+      localContents[id].updateTime = curTime
+      storage.set(CATEGORY_CONTENT_KEY, localContents)
     },
     updateScrollBar () {
       this.$refs.scroll && this.$refs.scroll.updateScrollBar()
+    },
+    scrollEnd (translate, scroll) {
+      this.isBacktopVisible = translate < 0 && -translate > scroll.height
     }
   }
 }
@@ -216,4 +259,5 @@ export default {
   .g-backtop-container {
     bottom: 10px;
   }
+
 </style>

@@ -88,7 +88,7 @@ export default {
     },
     // 更新滚动条
     updateScrollBar () {
-      console.log('更新滚动条')
+      // console.log('更新滚动条')
       setTimeout(() => {
         this.$refs.swiper && this.$refs.swiper.swiper.update()
       }, 0)
@@ -200,7 +200,7 @@ export default {
     // 返回第一个幻灯片,即返回顶部
     scrollToTop (speed, runCallbacks) {
       this.$refs.swiper && this.$refs.swiper.swiper.slideTo(0, speed, runCallbacks)
-      console.log('返回顶部')
+      // console.log('返回顶部')
     },
     // 滚动停止时，向外告知（用于显示返回顶部按钮）
     scrollEnd () {

@@ -3,7 +3,9 @@
   <div id="app" class="g-container">
     <!-- 主视图容器 -->
     <div class="g-view-container">
-      <router-view></router-view>
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
     </div>
     <!-- 底部导航条容器 -->
     <div class="g-footer-container">

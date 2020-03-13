@@ -98,7 +98,7 @@ export default {
     backToTop () {
       this.$refs.scroll && this.$refs.scroll.scrollToTop()
     },
-    // 滚动的过渡动画结束时，判断返回顶部按钮的位置
+    // 滚动的过渡动画结束时，判断按钮的位置
     scrollEnd (translate, scroll, pulling) {
       // 当页面往下拉，同时下拉距离超过一屏时，显示返回顶部按钮
       this.isBacktopVisible = translate < 0 && -translate > scroll.height
