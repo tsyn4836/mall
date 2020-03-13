@@ -2,7 +2,6 @@
   <!-- 滚动条容器 -->
   <swiper ref="swiper"
     :options="swiperOption"
-    @updateScrollBar="updateScrollBar"
   >
     <!-- 下拉刷新 -->
     <div class="mine-scroll-pull-down" v-if="pullDown">
@@ -97,7 +96,7 @@ export default {
     // 滚动页面时,修改下拉和上拉loading的文字
     scroll () {
       const swiper = this.$refs.swiper.swiper
-      console.log(swiper.translate)
+      // console.log(swiper.translate)
       // 向外散布它在滚动中
       this.$emit('scroll', swiper.translate, this.$refs.swiper.swiper)
       // 如果页面正在拉动数据,则禁止修改loading的文字
@@ -201,6 +200,7 @@ export default {
     // 返回第一个幻灯片,即返回顶部
     scrollToTop (speed, runCallbacks) {
       this.$refs.swiper && this.$refs.swiper.swiper.slideTo(0, speed, runCallbacks)
+      console.log('返回顶部')
     },
     // 滚动停止时，向外告知（用于显示返回顶部按钮）
     scrollEnd () {

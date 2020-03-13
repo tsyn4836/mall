@@ -10,7 +10,7 @@
     </header>
 
     <!-- 首页内容 -->
-    <me-scroll
+    <me-scroll class="g-content-container"
       ref="scroll"
       scrollbar
       pullDown
@@ -96,7 +96,6 @@ export default {
     },
     // 返回顶部
     backToTop () {
-      console.log('返回顶部')
       this.$refs.scroll && this.$refs.scroll.scrollToTop()
     },
     // 滚动的过渡动画结束时，判断返回顶部按钮的位置

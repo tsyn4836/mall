@@ -21,6 +21,10 @@
   width: 100%;
 }
 
+.g-content-container {
+  height: 100%;
+  padding-top: $navbar-height;
+}
 .g-footer-container {
   position: absolute;
   left: 0;
