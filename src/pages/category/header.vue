@@ -1,17 +1,31 @@
 <template>
   <me-navbar class="header">
-    <div slot="center">搜索框</div>
+    <div slot="center">
+      <me-search-box
+        fake
+        slot="center"
+        placeholder="开学季有礼，好货5折起"
+        @click.native="goToSearch"
+      />
+    </div>
     <i class="iconfont icon-msg" slot="right"></i>
   </me-navbar>
 </template>
 
 <script>
 import MeNavbar from 'base/navbar'
+import MeSearchBox from 'base/search-box'
 
 export default {
   name: 'CategoryHeader',
   components: {
-    MeNavbar
+    MeNavbar,
+    MeSearchBox
+  },
+  methods: {
+    goToSearch () {
+      this.$router.push('/search')
+    }
   }
 }
 </script>

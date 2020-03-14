@@ -89,9 +89,12 @@ export default {
     // 更新滚动条
     updateScrollBar () {
       // console.log('更新滚动条')
-      setTimeout(() => {
+      // setTimeout(() => {
+      // this.$refs.swiper && this.$refs.swiper.swiper.update()
+      // }, 0)
+      this.$nextTick(() => {
         this.$refs.swiper && this.$refs.swiper.swiper.update()
-      }, 0)
+      })
     },
     // 滚动页面时,修改下拉和上拉loading的文字
     scroll () {
@@ -185,9 +188,9 @@ export default {
       swiper.setTransition(swiper.params.speed)
       swiper.setTranslate(0)
       // 拉取结束后，向外触发下拉的过渡效果已经结束的事件（用于显示搜索框）
-      setTimeout(() => {
-        this.$emit('pull-down-transition-end')
-      }, swiper.params.speed)
+      // setTimeout(() => {
+      //   this.$emit('pull-down-transition-end')
+      // }, swiper.params.speed)
     },
     // 上拉结束时恢复初始状态
     pullUpEnd () {

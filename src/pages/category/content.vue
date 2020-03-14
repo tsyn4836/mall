@@ -151,6 +151,9 @@ export default {
     },
     scrollEnd (translate, scroll) {
       this.isBacktopVisible = translate < 0 && -translate > scroll.height
+    },
+    backToTop () {
+      this.$refs.scroll.scrollToTop()
     }
   }
 }
