@@ -38,7 +38,10 @@
     </div>
 
     <!-- 首页的产品路由视图 -->
-    <router-view></router-view>
+    <transition name="product">
+      <router-view/>
+    </transition>
+
   </div>
 </template>
 

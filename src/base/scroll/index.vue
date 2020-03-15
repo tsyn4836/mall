@@ -50,7 +50,7 @@ export default {
   props: {
     scrollbar: {
       type: Boolean,
-      default: true
+      default: false
     },
     pullDown: {
       type: Boolean,

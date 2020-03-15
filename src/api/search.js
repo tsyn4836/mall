@@ -19,13 +19,13 @@ export const getSearchHotKeyword = () => {
     if (err) {
       console.log(err)
     }
-    // 人为延迟1秒
-  }).then(res => {
-    return new Promise(resolve => {
-      setTimeout(() => {
-        resolve(res)
-      }, 1000)
-    })
+  //   // 人为延迟1秒
+  // }).then(res => {
+  //   return new Promise(resolve => {
+  //     setTimeout(() => {
+  //       resolve(res)
+  //     }, 1000)
+  //   })
   })
 }
 

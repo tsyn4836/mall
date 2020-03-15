@@ -94,7 +94,8 @@ export default {
     }
     &-text {
       width: 100%;
-      font-size: 18px;
+      color:$icon-color-default;
+      font-size: 16px;
       text-align: center;
       line-height: 1.5;
       @include ellipsis();
