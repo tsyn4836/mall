@@ -1,16 +1,17 @@
 <template>
   <!-- 首页 -->
   <div class="home">
-
     <!-- 首页头部 -->
     <header class="g-header-container">
       <home-header
-        :class="{'header-transition': isHeaderTransition}" ref="header"
+        :class="{ 'header-transition': isHeaderTransition }"
+        ref="header"
       />
     </header>
 
     <!-- 首页内容 -->
-    <me-scroll class="g-content-container"
+    <me-scroll
+      class="g-content-container"
       ref="scroll"
       scrollbar
       pullDown
@@ -21,27 +22,18 @@
       @scroll="scroll"
       @pull-down-transition-end="pullDownTransitionEnd"
     >
-      <home-slider ref="slider"/>
-      <home-nav/>
-      <home-recommend
-        @update-scrollbar="updateScrollBar"
-        ref="recommend"
-      />
+      <home-slider ref="slider" />
+      <home-nav />
+      <home-recommend @update-scrollbar="updateScrollBar" ref="recommend" />
     </me-scroll>
 
     <!-- 首页的返回顶部按钮 -->
     <div class="g-backtop-container">
-      <me-backtop
-        :visible="isBacktopVisible"
-        @backtop="backToTop"
-      />
+      <me-backtop :visible="isBacktopVisible" @backtop="backToTop" />
     </div>
 
     <!-- 首页的产品路由视图 -->
-    <transition name="product">
-      <router-view/>
-    </transition>
-
+    <router-view />
   </div>
 </template>
 
@@ -52,7 +44,7 @@ import HomeSlider from './slider'
 import HomeNav from './nav'
 import HomeRecommend from './recommend'
 import MeBacktop from 'base/backtop'
-import {HEADER_TRANSITION_HEIGHT} from './config'
+import { HEADER_TRANSITION_HEIGHT } from './config'
 
 export default {
   name: 'Home',
@@ -78,14 +70,16 @@ export default {
     },
     // 下拉刷新banner
     pullToRefresh (end) {
-      this.$refs.slider.update() // 刷新banner
+      this.$refs.slider
+        .update() // 刷新banner
         .then(end) // 让下拉在某高度的页面恢复原状
       console.log('下拉刷新banner')
     },
     // 上拉加载更多
     pullToLoadMore (end) {
       console.log('上拉加载更多')
-      this.$refs.recommend.update()
+      this.$refs.recommend
+        .update()
         .then(end)
         .catch(err => {
           if (err) {

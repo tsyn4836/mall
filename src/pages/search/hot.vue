@@ -1,23 +1,17 @@
 <template>
   <div class="hot">
     <h4 class="hot-title">热门搜索</h4>
-    <div
-      class="loading-container"
-      v-if="!hots.length"
-    >
-      <me-loading/>
+    <div class="loading-container" v-if="!hots.length">
+      <me-loading />
     </div>
-    <ul
-      class="hot-list"
-      v-else
-    >
+    <ul class="hot-list" v-else>
       <li
         class="hot-item"
         v-for="(item, index) in hots"
         :key="index"
         @click="$_search_selectItem(item.hotWord)"
       >
-        {{item.hotWord}}
+        {{ item.hotWord }}
       </li>
     </ul>
   </div>
@@ -25,8 +19,8 @@
 
 <script>
 import MeLoading from 'base/loading'
-import {getSearchHotKeyword} from 'api/search'
-import {searchMixin} from 'assets/js/mixins'
+import { getSearchHotKeyword } from 'api/search'
+import { searchMixin } from 'assets/js/mixins'
 
 export default {
   name: 'SearchHot',
@@ -60,7 +54,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~assets/scss/mixins";
+  @import "~assets/scss/mixins";
 
   .hot {
     padding-left: 10px;

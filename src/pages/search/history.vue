@@ -1,29 +1,18 @@
 <template>
   <div class="history" v-if="historys.length">
     <h4 class="history-title">历史搜索</h4>
-      <transition-group
-        class="g-list"
-        name="list"
-        tag="ul"
+    <transition-group class="g-list" name="list" tag="ul">
+      <li
+        class="g-list-item"
+        v-for="item in historys"
+        :key="item"
+        @click="$_search_selectItem(item)"
       >
-        <li
-          class="g-list-item"
-          v-for="item in historys"
-          :key="item"
-          @click="$_search_selectItem(item)"
-        >
-          <span class="g-list-text">{{item}}</span>
-          <i
-            class="iconfont icon-delete"
-            @click.stop="removeItem(item)"
-          ></i>
-        </li>
-      </transition-group>
-    <a
-      href="javascript:;"
-      class="history-btn"
-      @click="showConfirm"
-    >
+        <span class="g-list-text">{{ item }}</span>
+        <i class="iconfont icon-delete" @click.stop="removeItem(item)"></i>
+      </li>
+    </transition-group>
+    <a href="javascript:;" class="history-btn" @click="showConfirm">
       <i class="iconfont icon-clear">清空历史搜索</i>
     </a>
   </div>
@@ -31,8 +20,8 @@
 
 <script>
 import storage from 'assets/js/storage'
-import {SEARCH_HISTORY_KEYWORD_KEY} from './config'
-import {searchMixin} from 'assets/js/mixins'
+import { SEARCH_HISTORY_KEYWORD_KEY } from './config'
+import { searchMixin } from 'assets/js/mixins'
 export default {
   name: 'SearchHistory',
   mixins: [searchMixin],
@@ -69,7 +58,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~assets/scss/mixins";
+  @import "~assets/scss/mixins";
 
   .history {
     padding-bottom: 30px;
@@ -104,5 +93,4 @@ export default {
     border-bottom: 1px solid $border-color;
     margin-bottom: 20px;
   }
-
 </style>

@@ -24,7 +24,7 @@
     <!-- 加入购物车/购买 -->
     <div class="addCartAndBuy">
       <a class="addCart" href="javascript:;">加入购物车</a>
-      <a class="buy" href="javascript:;">购买</a>
+      <a class="buy" href="javascript:;">马上抢</a>
     </div>
   </div>
 </template>

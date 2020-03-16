@@ -1,24 +1,32 @@
 <template>
-  <div class="product">
-    <!-- 产品页头部 -->
-    <div class="g-header-container">
-      <product-header />
+  <transition name="product" appear>
+    <div class="product">
+      <!-- 产品页头部 -->
+      <header class="g-header-container">
+        <product-header />
+      </header>
+
+      <!-- 产品页内容 -->
+      <!-- 如果data是空对象(即还没从服务端获取到数据),显示加载中 -->
+      <me-loading v-if="!Object.keys(data).length" />
+
+      <!-- 从服务器获取到数据后,显示商品详情页内容 -->
+      <me-scroll
+        v-else scroll
+        ref="scroll"
+        class="g-content-container"
+      >
+        <product-slider :sliders="sliders" />
+        <product-base-info :baseInfo="baseInfo" />
+        <product-review :review="review" />
+        <product-seller :seller="seller" />
+      </me-scroll>
+      <!-- 底部导航 -->
+      <div class="g-footer-container">
+        <product-bottom-bar />
+      </div>
     </div>
-    <!-- 产品页内容 -->
-    <!-- 如果data是空对象(即还没从服务端获取到数据),显示加载中 -->
-    <me-loading v-if="!Object.keys(data).length" />
-    <!-- 从服务器获取到数据后,显示商品详情页内容 -->
-    <me-scroll v-else scroll ref="scroll" class="g-content-container">
-      <product-slider :sliders="sliders" />
-      <product-base-info :baseInfo="baseInfo" />
-      <product-review :review="review" />
-      <product-seller :seller="seller" />
-    </me-scroll>
-    <!-- 底部导航 -->
-    <div class="g-footer-container">
-      <product-bottom-bar />
-    </div>
-  </div>
+  </transition>
 </template>
 
 <script>

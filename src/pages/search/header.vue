@@ -1,10 +1,6 @@
 <template>
   <me-navbar class="header">
-    <i
-      class="iconfont icon-back"
-      slot="left"
-      @click="goBack"
-    ></i>
+    <i class="iconfont icon-back" slot="left" @click="goBack"></i>
     <me-search-box
       placeholder="开学季有礼，好货5折起"
       slot="center"
@@ -40,7 +36,7 @@ export default {
   .header {
     border-bottom: 1px solid $border-color;
 
-    .iconfont{
+    .iconfont {
       color: $icon-color;
       font-size: $icon-font-size;
     }

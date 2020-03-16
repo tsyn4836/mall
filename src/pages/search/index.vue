@@ -1,32 +1,29 @@
 <template>
   <transition name="search">
     <div class="search">
-    <!-- 搜索页头 -->
-    <header class="g-header-container">
-      <search-header @query="getQuery"/>
-    </header>
-    <!-- 搜索内容 -->
-    <div class="g-content-container">
-      <me-scroll ref="scroll">
-        <search-hot
-          v-show="!query"
-          @loaded="updateScrollBar"
-        />
-        <search-history
-          ref="history"
-          v-show="!query"
-          @remove-item="updateScrollBar"
-          @show-confirm="showConfirm"
-        />
-        <search-result :query="query" v-show="query"/>
-      </me-scroll>
-    </div>
-    <me-confirm
+      <!-- 搜索页头 -->
+      <header class="g-header-container">
+        <search-header @query="getQuery" />
+      </header>
+      <!-- 搜索内容 -->
+      <div class="g-content-container">
+        <me-scroll ref="scroll">
+          <search-hot v-show="!query" @loaded="updateScrollBar" />
+          <search-history
+            ref="history"
+            v-show="!query"
+            @remove-item="updateScrollBar"
+            @show-confirm="showConfirm"
+          />
+          <search-result :query="query" v-show="query" />
+        </me-scroll>
+      </div>
+      <me-confirm
         msg="确定要清空吗？"
         ref="confirm"
         @confirm="clearAllSearchHistorys"
       />
-  </div>
+    </div>
   </transition>
 </template>
 
@@ -85,11 +82,11 @@ export default {
   }
   .search-enter-active,
   .search-leave-active {
-      transition: all 0.3s;
+    transition: all 0.3s;
   }
 
   .search-enter,
   .search-leave-to {
-     transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
   }
 </style>
