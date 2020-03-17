@@ -41,11 +41,13 @@ export default {
 
 <style lang="scss" scoped>
   @import "~assets/scss/mixins";
-  .g-content-container {
-    // position: static;
-    padding-top: $navbar-height;
-    .personal {
-      width: 100%;
+  .personal {
+    height: 100%;
+    .g-content-container {
+      padding-top: $navbar-height;
+      .personal {
+        width: 100%;
+      }
     }
   }
 </style>
